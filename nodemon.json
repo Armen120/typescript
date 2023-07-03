@@ -3,3 +3,5 @@
     "ext": ".ts, .js",
     "exec":"ts-node ./dist/app.js"
 }
+
+

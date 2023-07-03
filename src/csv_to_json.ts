@@ -1,7 +1,7 @@
 import fs from 'fs';
 import process from 'process';
 import path from 'path';
-import csvParser from '../node_modules/csv-parser/index.js';
+import csvParser from '../node_modules/csv-parser/index';
 
 async function csvToJson(input:string, arr:string[]):Promise<void> {
 
@@ -13,12 +13,12 @@ async function csvToJson(input:string, arr:string[]):Promise<void> {
     const readableStream = fs.createReadStream(path.join(currentDir, input, arr[i]));
     const writableStream = fs.createWriteStream(outputPath);
 
-    readableStream.on('error', (err):never => {
+    readableStream.on('error', (err):void => {
       console.log('some issue with the readable stream:', err);
       process.exit(1);
     });
 
-    writableStream.on('error', (err):never=> {
+    writableStream.on('error', (err):void=> {
       console.log('some issue with the writable stream:', err);
       process.exit(1);
     });
